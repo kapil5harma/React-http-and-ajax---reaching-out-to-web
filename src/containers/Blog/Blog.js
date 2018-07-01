@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from './Posts/Posts';
@@ -14,7 +14,17 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <NavLink
+                  to="/"
+                  exact
+                  activeClassName="active"
+                  activeStyle={{
+                    color: '#fa923f',
+                    textDecoration: 'underline'
+                  }}
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
                 {/*
@@ -23,15 +33,16 @@ class Blog extends Component {
                   // To go tot a relative path i.e, to kapil5harma.com/post/new-post :
                   // Change to or pathname = `${this.props.match.url}/new-post`
                 */}
-                <Link
+                <NavLink
                   to={{
                     pathname: '/new-post',
                     hash: '#submit',
                     search: '?quick-submit=true'
                   }}
+                  exact
                 >
                   New Post
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </nav>

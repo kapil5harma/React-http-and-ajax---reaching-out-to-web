@@ -21,6 +21,10 @@ class NewPost extends Component {
     });
   };
 
+  componentDidMount = () => {
+    console.log('[NewPosts.js]:\nthis.props: ', this.props);
+  };
+
   render() {
     return (
       <div className="NewPost">

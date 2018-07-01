@@ -17,6 +17,12 @@ class Blog extends Component {
                 <Link to="/">Home</Link>
               </li>
               <li>
+                {/*
+                  // By default pathname or to = "xyz" loads an absolute path.
+                  // For example: If you're at kapil5harma.com/post to="/new-post" will take you to kapil5harma.com/new-post
+                  // To go tot a relative path i.e, to kapil5harma.com/post/new-post :
+                  // Change to or pathname = `${this.props.match.url}/new-post`
+                */}
                 <Link
                   to={{
                     pathname: '/new-post',

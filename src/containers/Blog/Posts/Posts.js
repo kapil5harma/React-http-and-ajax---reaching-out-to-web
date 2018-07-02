@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from '../../../axios';
 // import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Post from '../../../components/Post/Post';
+import FullPost from '../FullPost/FullPost';
 
 class Posts extends Component {
   state = {
@@ -34,7 +36,7 @@ class Posts extends Component {
     // this.setState({ selectedPostId: id });
 
     // If not using  Link, but want to programmatically push/pop pages/containers/components, do it as follows:
-    this.props.history.push({ pathname: `/${id}` });
+    this.props.history.push({ pathname: `${this.props.match.url}/${id}` });
 
     // Or like this:
     // this.props.history.push(`/${id}`);
@@ -59,7 +61,16 @@ class Posts extends Component {
       });
     }
 
-    return <section className="Posts">{posts}</section>;
+    return (
+      <div>
+        <section className="Posts">{posts}</section>;
+        <Route
+          path={`${this.props.match.url}/:id`}
+          exact
+          component={FullPost}
+        />
+      </div>
+    );
   }
 }
 

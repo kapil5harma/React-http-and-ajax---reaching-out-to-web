@@ -10,11 +10,22 @@ class FullPost extends Component {
 
   componentDidMount = () => {
     console.log('[FullPost]:\nthis.props: ', this.props);
+    this.loadData();
+  };
+
+  componentDidUpdate = (prevProps, prevState) => {
+    this.loadData();
+  };
+
+  loadData = () => {
     if (this.props.match.params.id) {
       if (
         !this.state.loadedPost ||
         (this.state.loadedPost &&
-          this.state.loadedPost.id !== this.props.match.params.id)
+          // Either change !== to != to check string and number are equal like this:
+          // this.state.loadedPost.id != this.props.match.params.id)
+          // Or convert string to number by adding + before it.
+          this.state.loadedPost.id !== +this.props.match.params.id)
       ) {
         axios.get(`/posts/${this.props.match.params.id}`).then(response => {
           // console.log('response: ', response);
@@ -32,7 +43,7 @@ class FullPost extends Component {
 
   render() {
     let post = <p style={{ textAlign: 'center' }}>Please select a Post!</p>;
-    if (this.props.id) {
+    if (this.props.match.params.id) {
       post = <p style={{ textAlign: 'center' }}>Loading...</p>;
     }
     if (this.state.loadedPost) {

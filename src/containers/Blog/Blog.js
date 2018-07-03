@@ -8,6 +8,10 @@ import NewPost from './NewPost/NewPost';
 // import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
+  state = {
+    auth: false
+  };
+
   render() {
     return (
       <div>
@@ -52,7 +56,9 @@ class Blog extends Component {
         <Route path="/" render={() => <h1>Home 2</h1>} /> */}
 
         <Switch>
-          <Route path="/new-post" exact component={NewPost} />
+          {this.state.auth ? (
+            <Route path="/new-post" exact component={NewPost} />
+          ) : null}
           <Route path="/posts" component={Posts} />
 
           {/* Say we want to load posts even when user goes to '/' */}

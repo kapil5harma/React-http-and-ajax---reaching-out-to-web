@@ -33,6 +33,8 @@ class NewPost extends Component {
 
   componentDidMount = () => {
     console.log('[NewPosts.js]:\nthis.props: ', this.props);
+
+    // If notAuth => this.props.history.replace('/posts');
   };
 
   render() {

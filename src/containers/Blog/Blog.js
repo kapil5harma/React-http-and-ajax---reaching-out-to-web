@@ -61,8 +61,15 @@ class Blog extends Component {
           ) : null}
           <Route path="/posts" component={Posts} />
 
+          {/* Handling 404: Page not found */}
+          <Route
+            render={() => (
+              <h1 style={{ textAlign: 'center' }}>Page Not Found</h1>
+            )}
+          />
+
           {/* Say we want to load posts even when user goes to '/' */}
-          <Redirect from="/" to="/posts" />
+          {/* <Redirect from="/" to="/posts" /> */}
 
           {/* We will put this route in Posts Component */}
           {/* <Route path="/:id" exact component={FullPost} /> */}

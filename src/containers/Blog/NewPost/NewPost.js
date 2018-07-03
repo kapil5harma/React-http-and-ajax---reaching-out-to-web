@@ -20,7 +20,14 @@ class NewPost extends Component {
     };
     axios.post('/posts', postData).then(response => {
       console.log('response: ', response);
-      this.setState({ submitted: true });
+      // Redirect re-render the page and sets new rootPage.
+      // this.setState({ submitted: true });
+
+      // It pushes the page on top of navigation stack, so that back button pops the page and last page can be visited.
+      this.props.history.push('/posts');
+
+      // Replace also is similar to Redirect but it does not re-render page.
+      // this.props.history.replace('/posts');
     });
   };
 
